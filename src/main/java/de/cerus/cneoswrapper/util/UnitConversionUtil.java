@@ -1,0 +1,25 @@
+package de.cerus.cneoswrapper.util;
+
+public class UnitConversionUtil {
+
+    /**
+     * Astronomical unit (distance from sun to earth) in meters
+     * 149,597,870,700 meters
+     */
+    public static double AU = 149597870700D;
+
+    /**
+     * Lunar distance (distance from moon to earth) in meters
+     * 384,400,000 meters
+     */
+    public static double LD = 384400 * 1000D;
+
+    public static double astronomicalToLunar(final double d) {
+        return (d * AU) / LD;
+    }
+
+    public static double lunarToAstronomical(final double d) {
+        return (d * LD) / AU;
+    }
+
+}
