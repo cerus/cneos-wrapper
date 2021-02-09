@@ -1,13 +1,18 @@
 package de.cerus.cneoswrapper.cad;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 public class CloseApproachData {
 
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MMM-dd HH:mm");
+
     private final String designation;
     private final int orbitId;
     private final String julianDate;
-    private final String calendarDate;
+    private final Date calendarDate;
     private final double distance;
     private final double distanceMin;
     private final double distanceMax;
@@ -22,7 +27,7 @@ public class CloseApproachData {
         this(rawData.get("des"),
                 Integer.parseInt(rawData.get("orbit_id")),
                 rawData.get("jd"),
-                rawData.get("cd"),
+                parseDate(rawData.get("cd")),
                 Double.parseDouble(rawData.get("dist")),
                 Double.parseDouble(rawData.get("dist_min")),
                 Double.parseDouble(rawData.get("dist_max")),
@@ -37,7 +42,7 @@ public class CloseApproachData {
     public CloseApproachData(final String designation,
                              final int orbitId,
                              final String julianDate,
-                             final String calendarDate,
+                             final Date calendarDate,
                              final double distance,
                              final double distanceMin,
                              final double distanceMax,
@@ -62,6 +67,14 @@ public class CloseApproachData {
         this.fullName = fullName;
     }
 
+    private static Date parseDate(final String date) {
+        try {
+            return DATE_FORMAT.parse(date);
+        } catch (final ParseException e) {
+            return null;
+        }
+    }
+
     public String getDesignation() {
         return this.designation;
     }
@@ -74,7 +87,7 @@ public class CloseApproachData {
         return this.julianDate;
     }
 
-    public String getCalendarDate() {
+    public Date getCalendarDate() {
         return this.calendarDate;
     }
 
