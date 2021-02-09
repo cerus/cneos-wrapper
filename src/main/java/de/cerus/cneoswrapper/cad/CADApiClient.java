@@ -1,21 +1,13 @@
 package de.cerus.cneoswrapper.cad;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import de.cerus.cneoswrapper.http.ApiResponse;
 import de.cerus.cneoswrapper.http.CNEOSHttpClient;
 import de.cerus.cneoswrapper.query.Query;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import okhttp3.Request;
 import okhttp3.Response;
 
@@ -48,7 +40,9 @@ public class CADApiClient {
                     return new ApiResponse<>(null, new IllegalStateException("Server returned status 503 (service unavailable)"));
             }
 
-            return new ApiResponse<>(this.parseCad(payload), null);
+            return new ApiResponse<>(this.httpClient.parseResponse(payload).stream()
+                    .map(CloseApproachData::new)
+                    .collect(Collectors.toList()), null);
         });
     }
 
@@ -74,30 +68,9 @@ public class CADApiClient {
                 return new ApiResponse<>(null, new IllegalStateException("Server returned status 503 (service unavailable)"));
         }
 
-        return new ApiResponse<>(this.parseCad(payload), null);
-    }
-
-    private List<CloseApproachData> parseCad(final String payload) {
-        final JsonObject jsonObject = JsonParser.parseString(payload).getAsJsonObject();
-        if (jsonObject.get("count").getAsLong() == 0) {
-            return Collections.emptyList();
-        }
-
-        final List<String> fields = StreamSupport.stream(jsonObject.get("fields").getAsJsonArray().spliterator(), false)
-                .map(JsonElement::getAsString)
-                .collect(Collectors.toList());
-        final JsonArray dataArray = jsonObject.get("data").getAsJsonArray();
-
-        return StreamSupport.stream(dataArray.spliterator(), false)
-                .map(JsonElement::getAsJsonArray)
-                .map(jsonElements -> {
-                    final Map<String, String> rawData = new HashMap<>();
-                    for (int i = 0; i < fields.size(); i++) {
-                        rawData.put(fields.get(i), jsonElements.get(i).getAsString());
-                    }
-                    return new CloseApproachData(rawData);
-                })
-                .collect(Collectors.toList());
+        return new ApiResponse<>(this.httpClient.parseResponse(payload).stream()
+                .map(CloseApproachData::new)
+                .collect(Collectors.toList()), null);
     }
 
 }
