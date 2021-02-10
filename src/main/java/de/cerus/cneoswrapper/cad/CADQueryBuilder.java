@@ -3,6 +3,11 @@ package de.cerus.cneoswrapper.cad;
 import de.cerus.cneoswrapper.query.Query;
 import de.cerus.cneoswrapper.query.QueryTime;
 
+/**
+ * A helper method for creating CAD API queries
+ *
+ * @author Maximilian Dorn
+ */
 public class CADQueryBuilder {
 
     private final Query query = new Query();

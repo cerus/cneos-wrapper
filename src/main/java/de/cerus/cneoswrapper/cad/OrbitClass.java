@@ -1,7 +1,10 @@
 package de.cerus.cneoswrapper.cad;
 
 /**
+ * Possible orbit classes
  * See https://ssd-api.jpl.nasa.gov/doc/cad.html#sbdb_class_table
+ *
+ * @author Maximilian Dorn
  */
 public enum OrbitClass {
 

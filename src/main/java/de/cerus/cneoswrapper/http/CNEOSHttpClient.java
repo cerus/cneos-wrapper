@@ -18,6 +18,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * A simple HTTP client for CNEOS API's based on a OkHttp client.
+ *
+ * @author Maximilian Dorn
+ */
 public class CNEOSHttpClient {
 
     private final ExecutorService executorService = Executors.newCachedThreadPool();
@@ -31,10 +36,26 @@ public class CNEOSHttpClient {
         this.httpClient = httpClient;
     }
 
+    /**
+     * Execute a request synchronously
+     *
+     * @param request The request
+     *
+     * @return A response
+     *
+     * @throws IOException if the request could not be executed
+     */
     public Response executeSync(final Request request) throws IOException {
         return this.httpClient.newCall(request).execute();
     }
 
+    /**
+     * Execute a request asynchronously
+     *
+     * @param request The request
+     *
+     * @return A response
+     */
     public CompletableFuture<Response> executeAsync(final Request request) {
         final CompletableFuture<Response> future = new CompletableFuture<>();
         this.executorService.submit(() -> {
@@ -47,6 +68,13 @@ public class CNEOSHttpClient {
         return future;
     }
 
+    /**
+     * A helper method for converting standard CNEOS json responses into a list of String, String maps
+     *
+     * @param payload The json response
+     *
+     * @return A list of String, String maps
+     */
     public List<Map<String, String>> parseResponse(final String payload) {
         final JsonObject jsonObject = JsonParser.parseString(payload).getAsJsonObject();
         if (jsonObject.get("count").getAsLong() == 0) {
@@ -70,6 +98,9 @@ public class CNEOSHttpClient {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Shutdown the executor service
+     */
     public void shutdown() {
         this.executorService.shutdown();
     }

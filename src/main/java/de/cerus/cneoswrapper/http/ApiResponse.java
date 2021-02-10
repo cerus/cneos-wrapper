@@ -1,5 +1,12 @@
 package de.cerus.cneoswrapper.http;
 
+/**
+ * Represents a API response with an optional throwable.
+ *
+ * @param <T> The response
+ *
+ * @author Maximilian Dorn
+ */
 public class ApiResponse<T> {
 
     private final T data;

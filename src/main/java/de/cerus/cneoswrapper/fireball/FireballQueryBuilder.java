@@ -3,6 +3,11 @@ package de.cerus.cneoswrapper.fireball;
 import de.cerus.cneoswrapper.query.Query;
 import de.cerus.cneoswrapper.query.QueryTime;
 
+/**
+ * A helper method for creating Fireball API queries
+ *
+ * @author Maximilian Dorn
+ */
 public class FireballQueryBuilder {
 
     private final Query query = new Query();

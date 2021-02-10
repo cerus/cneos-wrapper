@@ -1,5 +1,10 @@
 package de.cerus.cneoswrapper.cad;
 
+/**
+ * Possible object kinds
+ *
+ * @author Maximilian Dorn
+ */
 public enum Kind {
 
     ASTEROID("a"),

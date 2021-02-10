@@ -5,6 +5,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents a basic Query. This query should not be used directly; Instead the query builders f
+ * or the respective API wrappers should be used.
+ *
+ * @author Maximilian Dorn
+ */
 public class Query {
 
     private final Map<String, String> paramMap = new HashMap<>();

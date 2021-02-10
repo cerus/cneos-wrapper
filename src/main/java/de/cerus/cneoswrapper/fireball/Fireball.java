@@ -5,7 +5,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import org.jetbrains.annotations.Nullable;
 
+/**
+ * Represents Fireball data
+ *
+ * @author Maximilian Dorn
+ */
 public class Fireball {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -38,18 +44,18 @@ public class Fireball {
                 NumberUtil.parseDouble(rawData.get("vz")));
     }
 
-    public Fireball(final Date date,
-                    final Double latitude,
-                    final Double longitude,
-                    final String latitudeDirection,
-                    final String longitudeDirection,
-                    final Double altitude,
-                    final Double velocityAtPeak,
+    public Fireball(@Nullable final Date date,
+                    @Nullable final Double latitude,
+                    @Nullable final Double longitude,
+                    @Nullable final String latitudeDirection,
+                    @Nullable final String longitudeDirection,
+                    @Nullable final Double altitude,
+                    @Nullable final Double velocityAtPeak,
                     final double energy,
                     final double impactEnergy,
-                    final Double velocityX,
-                    final Double velocityY,
-                    final Double velocityZ) {
+                    @Nullable final Double velocityX,
+                    @Nullable final Double velocityY,
+                    @Nullable final Double velocityZ) {
         this.date = date;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -76,30 +82,37 @@ public class Fireball {
         }
     }
 
+    @Nullable
     public Date getDate() {
         return this.date;
     }
 
+    @Nullable
     public Double getLatitude() {
         return this.latitude;
     }
 
+    @Nullable
     public Double getLongitude() {
         return this.longitude;
     }
 
+    @Nullable
     public String getLatitudeDirection() {
         return this.latitudeDirection;
     }
 
+    @Nullable
     public String getLongitudeDirection() {
         return this.longitudeDirection;
     }
 
+    @Nullable
     public Double getAltitude() {
         return this.altitude;
     }
 
+    @Nullable
     public Double getVelocityAtPeak() {
         return this.velocityAtPeak;
     }
@@ -116,14 +129,17 @@ public class Fireball {
         return this.impactEnergy;
     }
 
+    @Nullable
     public Double getVelocityX() {
         return this.velocityX;
     }
 
+    @Nullable
     public Double getVelocityY() {
         return this.velocityY;
     }
 
+    @Nullable
     public Double getVelocityZ() {
         return this.velocityZ;
     }

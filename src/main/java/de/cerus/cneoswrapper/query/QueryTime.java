@@ -3,6 +3,11 @@ package de.cerus.cneoswrapper.query;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * A simple helper class to convert date and time into a format for queries.
+ *
+ * @author Maximilian Dorn
+ */
 public class QueryTime {
 
     private final int year;

@@ -1,5 +1,10 @@
 package de.cerus.cneoswrapper.cad;
 
+/**
+ * Possible bodies
+ *
+ * @author Maximilian Dorn
+ */
 public enum Body {
 
     MERCURY("Merc"),

@@ -1,5 +1,10 @@
 package de.cerus.cneoswrapper.util;
 
+/**
+ * Simple utility for converting between AU and LD
+ *
+ * @author Maximilian Dorn
+ */
 public class UnitConversionUtil {
 
     /**

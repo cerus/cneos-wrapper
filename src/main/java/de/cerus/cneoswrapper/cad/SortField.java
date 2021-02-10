@@ -1,5 +1,10 @@
 package de.cerus.cneoswrapper.cad;
 
+/**
+ * Possible sorting fields for the CAD API
+ *
+ * @author Maximilian Dorn
+ */
 public enum SortField {
 
     DATE("date"),

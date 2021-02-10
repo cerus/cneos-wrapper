@@ -4,7 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import org.jetbrains.annotations.Nullable;
 
+/**
+ * Represents CAD API data
+ *
+ * @author Maximilian Dorn
+ */
 public class CloseApproachData {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MMM-dd HH:mm");
@@ -49,9 +55,9 @@ public class CloseApproachData {
                              final double velocityInfinite,
                              final double velocityRelative,
                              final String threeSigmaUncertainty,
-                             final Body body,
+                             @Nullable final Body body,
                              final double absMagnitude,
-                             final String fullName) {
+                             @Nullable final String fullName) {
         this.designation = designation;
         this.orbitId = orbitId;
         this.julianDate = julianDate;
@@ -115,6 +121,7 @@ public class CloseApproachData {
         return this.threeSigmaUncertainty;
     }
 
+    @Nullable
     public Body getBody() {
         return this.body;
     }
@@ -123,6 +130,7 @@ public class CloseApproachData {
         return this.absMagnitude;
     }
 
+    @Nullable
     public String getFullName() {
         return this.fullName;
     }

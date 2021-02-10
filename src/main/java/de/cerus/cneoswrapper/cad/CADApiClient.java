@@ -11,6 +11,11 @@ import java.util.stream.Collectors;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * A client for the CAD API
+ *
+ * @author Maximilian Dorn
+ */
 public class CADApiClient {
 
     private final CNEOSHttpClient httpClient;
@@ -19,6 +24,13 @@ public class CADApiClient {
         this.httpClient = httpClient;
     }
 
+    /**
+     * Retrieves CAD data using the provided query asynchronously
+     *
+     * @param query The query
+     *
+     * @return A API response
+     */
     public CompletableFuture<ApiResponse<List<CloseApproachData>>> retrieveCloseApproachDataAsync(final Query query) {
         return this.httpClient.executeAsync(new Request.Builder()
                 .url("https://ssd-api.jpl.nasa.gov/cad.api" + query.buildQueryString(true))
@@ -46,6 +58,13 @@ public class CADApiClient {
         });
     }
 
+    /**
+     * Retrieves CAD data using the provided query synchronously
+     *
+     * @param query The query
+     *
+     * @return A API response
+     */
     public ApiResponse<List<CloseApproachData>> retrieveCloseApproachData(final Query query) {
         final Response response;
         final String payload;

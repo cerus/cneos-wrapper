@@ -11,6 +11,11 @@ import java.util.stream.Collectors;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * A client for the Fireball API
+ *
+ * @author Maximilian Dorn
+ */
 public class FireballApiClient {
 
     private final CNEOSHttpClient httpClient;
@@ -19,6 +24,13 @@ public class FireballApiClient {
         this.httpClient = httpClient;
     }
 
+    /**
+     * Retrieves Fireball data using the provided query asynchronously
+     *
+     * @param query The query
+     *
+     * @return A API response
+     */
     public CompletableFuture<ApiResponse<List<Fireball>>> retrieveFireballsAsync(final Query query) {
         return this.httpClient.executeAsync(new Request.Builder()
                 .url("https://ssd-api.jpl.nasa.gov/fireball.api" + query.buildQueryString(true))
@@ -48,6 +60,13 @@ public class FireballApiClient {
         });
     }
 
+    /**
+     * Retrieves Fireball data using the provided query synchronously
+     *
+     * @param query The query
+     *
+     * @return A API response
+     */
     public ApiResponse<List<Fireball>> retrieveFireballs(final Query query) {
         final Response response;
         final String payload;

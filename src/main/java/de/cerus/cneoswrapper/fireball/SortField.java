@@ -1,5 +1,10 @@
 package de.cerus.cneoswrapper.fireball;
 
+/**
+ * Possible sorting fields for the Fireball API
+ *
+ * @author Maximilian Dorn
+ */
 public enum SortField {
 
     DATE("date"),
