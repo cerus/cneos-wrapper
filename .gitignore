@@ -2,6 +2,7 @@
 target/
 out/
 run/
+README.md
 *.xml
 *.md
 *.iml
