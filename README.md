@@ -1,6 +1,6 @@
 # cneos-wrapper
 
-Nasa SSD & CNEOS API wrapper written in Java
+Nasa [SSD](https://ssd.jpl.nasa.gov/) & [CNEOS](https://cneos.jpl.nasa.gov/) [API](https://ssd-api.jpl.nasa.gov/) wrapper written in Java
 
 ## Implemented API wrappers
 
