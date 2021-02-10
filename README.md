@@ -33,4 +33,4 @@ Installation using Maven:
 
 You can obtain a wrapper instance for the desired API using the `CNEOSApi` class (e.g. `CNEOSApi#getNewCADApiClient()`).
 
-Most API wrappers provide useful query builders. Take a look at the JavaDoc for more information.
+Most API wrappers provide useful query builders. Take a look at the [JavaDoc](https://cerus.github.io/cneos-wrapper/) for more information.
