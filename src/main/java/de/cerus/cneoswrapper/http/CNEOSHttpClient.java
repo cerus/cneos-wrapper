@@ -63,7 +63,7 @@ public class CNEOSHttpClient {
                 .map(jsonElements -> {
                     final Map<String, String> rawData = new HashMap<>();
                     for (int i = 0; i < fields.size(); i++) {
-                        rawData.put(fields.get(i), jsonElements.get(i).getAsString());
+                        rawData.put(fields.get(i), jsonElements.get(i).isJsonNull() ? null : jsonElements.get(i).getAsString());
                     }
                     return rawData;
                 })

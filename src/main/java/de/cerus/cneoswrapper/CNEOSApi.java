@@ -1,8 +1,8 @@
 package de.cerus.cneoswrapper;
 
 import de.cerus.cneoswrapper.cad.CADApiClient;
+import de.cerus.cneoswrapper.fireball.FireballApiClient;
 import de.cerus.cneoswrapper.http.CNEOSHttpClient;
-import de.cerus.cneoswrapper.util.UnitConversionUtil;
 
 public class CNEOSApi {
 
@@ -15,9 +15,8 @@ public class CNEOSApi {
         return new CADApiClient(httpClient);
     }
 
-    public static void main(final String[] args) {
-        System.out.println(UnitConversionUtil.astronomicalToLunar(1));
-        System.out.println(UnitConversionUtil.lunarToAstronomical(1));
+    public static FireballApiClient getNewFireballApiClient() {
+        return new FireballApiClient(httpClient);
     }
 
 }
