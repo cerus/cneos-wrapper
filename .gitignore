@@ -2,5 +2,7 @@
 target/
 out/
 run/
-dependency-reduced-pom.xml
+src/
+*.xml
+*.md
 *.iml
