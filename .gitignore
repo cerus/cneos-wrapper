@@ -2,7 +2,6 @@
 target/
 out/
 run/
-src/
 *.xml
 *.md
 *.iml
